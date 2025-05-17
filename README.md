@@ -1,2 +1,2 @@
-# dental-scheduling-app
+# Dental Scheduling App
 This is a Dental Office Online Scheduling System that built with React/Node.js

@@ -1,12 +1,13 @@
 {
-  "name": "pos-consolidator-services",
+  "name": "dental-scheduling-api",
   "version": "1.0.0",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pkg": "pkg . --scripts=index.js",
-    "dev": "nodemon index.js"
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "prod": "cross-env NODE_ENV=production nodemon index.js"
   },
   "pkg": {
     "scripts": "require.js",
@@ -43,5 +44,8 @@
     "pkg": "^5.8.1",
     "sequelize": "^6.37.3",
     "sequelize-auto": "^0.8.8"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
