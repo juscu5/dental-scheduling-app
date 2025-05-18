@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ let navigationItems = [
 
 export default function CustomAppBar(props: Props) {
   const { window, children, title, items } = props;
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   /* this will be the default navigation items 
@@ -61,6 +63,16 @@ export default function CustomAppBar(props: Props) {
     </Box>
   );
 
+  const handleNavigation = (item: string) => {
+    switch (item) {
+      case "Home":
+        navigate("/home");
+        break;
+      default:
+        break;
+    }
+  };
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
   return (
@@ -84,7 +96,11 @@ export default function CustomAppBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button
+                key={item}
+                sx={{ color: "#fff" }}
+                onClick={() => handleNavigation(item)}
+              >
                 {item}
               </Button>
             ))}
