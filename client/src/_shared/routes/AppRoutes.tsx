@@ -1,22 +1,17 @@
-import { createHashRouter } from "react-router-dom";
-import { RootStyle } from "../components/Style/RootStyle";
-import { ToastContainer } from "react-toastify";
+import { createHashRouter, Outlet } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import PublicRoutesWrapper from "../components/PublicRoutesWrapper";
 
 export const AppRoutes = createHashRouter([
   {
     path: "/",
-    element: (
-      <QueryClientProvider client={queryClient}>
-        <RootStyle>
-          <ToastContainer />
-          {/* Put pages here */}
-          <>test lang</>
-        </RootStyle>
-      </QueryClientProvider>
-    ),
+    element: <PublicRoutesWrapper />,
+    children: [
+      // Put element here like this
+      // {
+      //   path: "",
+      //   element: <></>,
+      // },
+    ],
   },
 ]);

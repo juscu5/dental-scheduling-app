@@ -1,12 +1,19 @@
-import { Navigate } from 'react-router-dom';
-import { useAccountStore } from '../store/AccountStore';
+import { ToastContainer } from "react-toastify";
+import { RootStyle } from "./Style/RootStyle";
+import CustomAppBar from "./CustomAppBar";
+import { Suspense } from "react";
+import Loader from "./Loader";
+import { Outlet } from "react-router-dom";
 
-interface PublicRoutesProps {
-  element: React.ReactNode;
-}
-
-export default function PublicRoutesWrapper({ element }: PublicRoutesProps) {
-  const { account } = useAccountStore();
-
-  return !account ? element : <Navigate to={'/dashboard'} replace />;
+export default function PublicRoutesWrapper() {
+  return (
+    <RootStyle>
+      <ToastContainer />
+      <CustomAppBar title="Dental Clinic">
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </CustomAppBar>
+    </RootStyle>
+  );
 }
