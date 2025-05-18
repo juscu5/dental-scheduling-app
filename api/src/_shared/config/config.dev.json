@@ -1,0 +1,15 @@
+{
+  "privateKey": "dental123",
+  "api": {
+    "host": "localhost",
+    "port": "8080"
+  },
+  "db": {
+    "dialect": "mysql",
+    "database": "dentaldb",
+    "port": "3306",
+    "host": "localhost",
+    "username": "root",
+    "password": ""
+  }
+}

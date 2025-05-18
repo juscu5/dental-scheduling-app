@@ -3,60 +3,42 @@ const cors = require("cors");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const { initRoutes } = require("./src/_shared/@init/init-routes");
-const config = require("./src/_shared/config.json");
+const configDev = require("./src/_shared/config/config.dev.json");
+const configProd = require("./src/_shared/config/config.prod.json");
+const config = process.env.NODE_ENV === "production" ? configProd.api : configDev.api;
+const { corsOptions, xOptions } = require("./src/_shared/config/HeaderConfig");
 
-const allowedAppSite = [
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "http://localhost:8085",
-  "http://192.168.2.250:8085",
-];
-
-const corsOptions = {
-  origin: allowedAppSite,
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  headers: ["Content-Type", "Authorization", "X-Requested-With"],
-};
-
-const xOptions = {
-  frameguard: {
-    action: "deny",
-  },
-};
-
-const app = express();
-
-app.use(cors(corsOptions));
-app.use(helmet(xOptions));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
-app.use((req, res, next) => {
-  res.setHeader(
-    "Permissions-Policy",
-    "geolocation=(), midi=(), sync-xhr=(), microphone=(self), camera=(self), magnetometer=(), gyroscope=(), fullscreen=(self), payment=()"
-  );
-  next();
-});
-app.use((req, res, next) => {
-  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-  next();
-});
-
-// Hiding Headers
-app.disable("x-powered-by");
-app.use((req, res, next) => {
-  res.removeHeader("Server");
-  // res.setHeader('Server', 'CustomServerName'); // custom server value
-  next();
-});
-
+// Initialization
 async function init() {
-  initRoutes(app);
+  const app = express();
+  app.use(cors(corsOptions));
+  app.use(helmet(xOptions));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
+  app.use((req, res, next) => {
+    res.setHeader(
+      "Permissions-Policy",
+      "geolocation=(), midi=(), sync-xhr=(), microphone=(self), camera=(self), magnetometer=(), gyroscope=(), fullscreen=(self), payment=()"
+    );
+    next();
+  });
+  app.use((req, res, next) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    next();
+  });
 
+  // Hiding Headers
+  app.disable("x-powered-by");
+  app.use((req, res, next) => {
+    res.removeHeader("Server");
+    // res.setHeader('Server', 'CustomServerName'); // custom server value
+    next();
+  });
+
+  initRoutes(app);
+  app.get("/", (req, res) => {
+    res.send("Server is running");
+  });
   app.listen(config.port);
   console.log(`Running at http://${config.host}:${config.port}/api`);
 }
