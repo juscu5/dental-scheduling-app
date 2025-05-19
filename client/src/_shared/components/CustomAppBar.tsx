@@ -69,6 +69,9 @@ export default function CustomAppBar(props: Props) {
       case "Home":
         navigate("/home");
         break;
+      case "Services":
+        navigate("/services");
+        break; 
       default:
         break;
     }
