@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import jdcImage from "../assets/jdc_dental.png";
 
 interface Props {
   children: React.ReactNode;
@@ -28,8 +29,8 @@ let navigationItems = [
   "Home",
   "Services",
   "About Us",
-  "Make an Appointment",
   "Contact Us",
+  "Book An Appointment",
 ];
 
 export default function CustomAppBar(props: Props) {
@@ -92,7 +93,16 @@ export default function CustomAppBar(props: Props) {
             component="div"
             sx={{ flexGrow: 5, display: { sm: "block" } }}
           >
-            {title}
+            {/* {title} */}
+            <img
+              src={jdcImage}
+              alt="JDC Dental Clinic Logo"
+              style={{
+                width: 110,
+                height: 60,
+                filter: "drop-shadow(5px 5px 8px #000)",
+              }}
+            />
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
@@ -137,9 +147,10 @@ export default function CustomAppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Container>
+      <Box component="main">
+        <Toolbar sx={{ mb: { xs: 0, sm: 6, md: 6, lg: 6 } }} />
         <Box>{children}</Box>
-      </Container>
+      </Box>
     </Box>
   );
 }
