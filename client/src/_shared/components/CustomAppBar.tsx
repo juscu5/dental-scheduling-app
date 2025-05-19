@@ -75,6 +75,9 @@ export default function CustomAppBar(props: Props) {
       case "About Us":
         navigate("/about-us");
         break;
+      case "Contact Us":
+        navigate("/contact-us");
+        break;
       default:
         break;
     }

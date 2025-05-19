@@ -4,6 +4,7 @@ import PublicRoutesWrapper from "../components/PublicRoutesWrapper";
 import Home from "../../Home";
 import Services from "../../Services";
 import AboutUs from "../../AboutUs";
+import ContactUs from "../../ContactUs";
 
 export const AppRoutes = createHashRouter([
   {
@@ -26,6 +27,10 @@ export const AppRoutes = createHashRouter([
       {
         path: "about-us",
         element: <AboutUs />,
+      },
+      {
+        path: "contact-us",
+        element: <ContactUs />,
       },
     ],
   },
