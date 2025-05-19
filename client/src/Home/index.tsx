@@ -200,7 +200,11 @@ const Home = () => {
               </Card>
             </Grid>
           </Grid>
-          <Button variant="outlined" color="primary">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => navigate("/services")}
+          >
             See More
           </Button>
         </Box>

@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PublicRoutesWrapper from "../components/PublicRoutesWrapper";
 import Home from "../../Home";
 import Services from "../../Services";
+import AboutUs from "../../AboutUs";
 
 export const AppRoutes = createHashRouter([
   {
@@ -21,6 +22,10 @@ export const AppRoutes = createHashRouter([
       {
         path: "services",
         element: <Services />,
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />,
       },
     ],
   },
