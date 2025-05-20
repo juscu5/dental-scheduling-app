@@ -78,6 +78,9 @@ export default function CustomAppBar(props: Props) {
       case "Contact Us":
         navigate("/contact-us");
         break;
+      case "Book An Appointment":
+        navigate("/book-an-appointment");
+        break;
       default:
         break;
     }

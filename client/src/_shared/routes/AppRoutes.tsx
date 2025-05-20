@@ -5,6 +5,7 @@ import Home from "../../Home";
 import Services from "../../Services";
 import AboutUs from "../../AboutUs";
 import ContactUs from "../../ContactUs";
+import Appointment from "../../Appointment";
 
 export const AppRoutes = createHashRouter([
   {
@@ -16,6 +17,10 @@ export const AppRoutes = createHashRouter([
       //   path: "",
       //   element: <></>,
       // },
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "home",
         element: <Home />,
@@ -31,6 +36,10 @@ export const AppRoutes = createHashRouter([
       {
         path: "contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "book-an-appointment",
+        element: <Appointment />,
       },
     ],
   },
