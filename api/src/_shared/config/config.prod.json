@@ -6,10 +6,10 @@
   },
   "db": {
     "dialect": "mysql",
-    "database": "dentaldb",
+    "database": "dental_db",
     "port": "3306",
-    "host": "localhost",
-    "username": "root",
-    "password": ""
+    "host": "dental-db.cl6kuu604f7m.ap-southeast-2.rds.amazonaws.com",
+    "username": "admin",
+    "password": "dental123"
   }
 }

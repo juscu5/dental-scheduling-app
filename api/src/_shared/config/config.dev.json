@@ -6,10 +6,10 @@
   },
   "db": {
     "dialect": "mysql",
-    "database": "dentaldb",
+    "database": "dental_db",
     "port": "3306",
     "host": "localhost",
     "username": "root",
-    "password": ""
+    "password": "Lstv@2016"
   }
 }

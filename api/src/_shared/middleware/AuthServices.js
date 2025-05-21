@@ -2,16 +2,16 @@ const { privateKey } = require("../config/config.dev.json");
 const jwt = require("jsonwebtoken");
 
 const signToken = (body) => {
-  const { usrname, usrcde, usrpwd } = body;
+  const { id, username, password } = body;
 
   return jwt.sign(
     {
       exp: Math.floor(Date.now() / 1000) + 60 * 60,
       // exp: Math.floor(Date.now() / 1000) + 10, //10 Sec for Debugging
       data: {
-        usrname: usrname,
-        usrcde: usrcde,
-        usrpwd: usrpwd,
+        id: id,
+        username: username,
+        password: password,
       },
     },
     privateKey,

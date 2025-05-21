@@ -3,21 +3,29 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { BookingField } from "./types";
 import moment from "moment";
 
-const Book = () => {
-  const sampleEvents = [
-    {
-      title: "Dr. Smith",
-      start: moment("2025-05-20T10:00:00").toDate(),
-      end: moment("2025-05-20T11:00:00").toDate(),
-    },
-  ];
+const Book = ({ events }: { events: BookingField[] }) => {
+  const Events = events.map((e) => ({
+    title: e.firstname,
+    start: moment(
+      `${moment(e.date).format("YYYY-MM-DD")}T${moment(e.timestart).format(
+        "HH:mm:ss"
+      )}`
+    ).toDate(),
+    end: moment(
+      `${moment(e.date).format("YYYY-MM-DD")}T${moment(e.timeend).format(
+        "HH:mm:ss"
+      )}`
+    ).toDate(),
+  }));
 
   return (
     <Box
       sx={{
         maxWidth: 900,
+        width: { xs: 500, sm: 500, md: 800, lg: 800 },
         mx: "auto",
         p: 3,
         borderRadius: 3,
@@ -34,8 +42,8 @@ const Book = () => {
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
-        events={sampleEvents}
-        height={500}
+        events={Events}
+        height={600}
       />
     </Box>
   );

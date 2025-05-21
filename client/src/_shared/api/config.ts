@@ -1,4 +1,4 @@
-export const SERVER_HOST = "http://localhost:8081";
+export const SERVER_HOST = "http://localhost:8080";
 export const SERVER_URL = `${SERVER_HOST}/api`;
 
 export const config = {
