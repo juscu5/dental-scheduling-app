@@ -129,9 +129,8 @@ function App() {
 - Add more updgrade came from actual clients
 
 
-## Demo
-
-Insert gif or link to demo
+## Demo Video
+https://drive.google.com/file/d/1godmMsouVMui5lyGEF8m9KW0LQZFG_4Y/view?pli=1
 
 
 ## Screenshots
@@ -145,6 +144,5 @@ https://drawsql.app/teams/jscu/diagrams/dental-scheduling-app
 
 
 ## Acknowledgements
-
  - Assignment/Task given by Ma'am Collene Brillantes
 
