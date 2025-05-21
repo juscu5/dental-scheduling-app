@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dentist-frontend
+  labels:
+    app: dentist-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dentist-frontend
+  template:
+    metadata:
+      labels:
+        app: dentist-frontend
+    spec:
+      containers:
+        - name: dentist-frontend
+          image: 567795904996.dkr.ecr.ap-southeast-2.amazonaws.com/dentistfrontend:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always

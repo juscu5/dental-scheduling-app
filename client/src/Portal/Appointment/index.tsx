@@ -108,6 +108,7 @@ const PortalAppointment = () => {
   const handleEditAppointment = useCallback(
     async (formData: AppointmentField) => {
       try {
+        console.log(formData)
         const timeStart = formData.schedule.slice(0, 8);
         const timeEnd = formData.schedule.slice(9, 17);
         const data = {
@@ -117,7 +118,6 @@ const PortalAppointment = () => {
           time_start: timeStart,
           time_end: timeEnd,
         };
-        console.log(data);
         const res = await editBookingQuery(
           account,
           formData.id.toString(),
@@ -225,13 +225,13 @@ const PortalAppointment = () => {
             display="flex"
             width={{ xs: "200vh", sm: "140vh", md: "175vh", lg: "100vh" }}
           >
-            <Stack flexDirection={"column"} width="100%">
+            <Stack flexDirection={"column"}>
               <Box display="flex" justifyContent="flex-end">
                 <Button
                   onClick={handleBookButtonClick}
                   variant="contained"
                   sx={{
-                    width: { xs: "195vh", sm: "125vh", md: "50vh", lg: "30vh" },
+                    width: { xs: "125vh", sm: "125vh", md: "50vh", lg: "30vh" },
                     mb: { xs: 3, sm: 3, md: 3, lg: 0 },
                   }}
                 >

@@ -24,6 +24,7 @@
       "@shared": ["src/shared"],
       "@models": ["src/models"],
       "@utils": ["src/utils"],
+      "rollup/parseAst": ["./node_modules/rollup/dist/parseAst"]
     },
   },
   "include": ["src", "electron"],

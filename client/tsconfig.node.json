@@ -4,7 +4,11 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "rollup/parseAst": ["./node_modules/rollup/dist/parseAst"]
+    }
   },
-  "include": ["vite.config.ts", "package.json"],
+  "include": ["vite.config.ts", "package.json"]
 }

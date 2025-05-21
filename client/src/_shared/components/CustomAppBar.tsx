@@ -64,6 +64,14 @@ export default function CustomAppBar(props: Props) {
     </Box>
   );
 
+  React.useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [mobileOpen]);
+
   const handleNavigation = (item: string) => {
     switch (item) {
       case "Home":
@@ -159,8 +167,15 @@ export default function CustomAppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main">
-        <Toolbar sx={{ mb: { xs: 0, sm: 6, md: 6, lg: 6 } }} />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          overflowX: "hidden",
+          width: "100%",
+        }}
+      >
+        <Toolbar sx={{ mb: { xs: 0, sm: 6 } }} />
         <Box>{children}</Box>
       </Box>
     </Box>
