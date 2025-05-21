@@ -34,6 +34,7 @@ export const ContactUs = () => {
 
   const handleSubmitForm = (data: ContactUsFormType) => {
     console.log("this is the data", data);
+    reset()
   };
 
   return (

@@ -1,12 +1,13 @@
 import React, { Suspense, useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { isLoggedInApi } from "../api/UsersApi";
+import Loader from "./Loader";
+import { isLoggedInApi, ProfileResponse } from "../api/UsersApi";
 import { useAccountStore } from "../store/AccountStore";
 import { useAuthStore } from "../store/AuthStore";
 import { useMutation } from "@tanstack/react-query";
-import { RootStyle } from "./Style/RootStyle";
-import type { ProfileResponse } from "../api/UsersApi";
-import Loader from "./Loader";
+import { ToastContainer } from "react-toastify";
+import PortalAppBar from "../../Portal/components/PortalAppBar";
+import { Box } from "@mui/material";
 
 const PrivateRoutesWrapper: React.FC = () => {
   const { account } = useAccountStore();
@@ -16,7 +17,7 @@ const PrivateRoutesWrapper: React.FC = () => {
   const checkUserProfile = useMutation<ProfileResponse, Error, string>({
     mutationFn: isLoggedInApi,
     onSuccess: (data) => {
-      setUser(data.payload);
+      setUser((data.payload as { firstname: string })?.firstname);
     },
   });
 
@@ -26,18 +27,28 @@ const PrivateRoutesWrapper: React.FC = () => {
 
   useEffect(() => {
     if (!account) {
-      navigate("/login");
+      navigate("/jdcdc-portal");
+    } else {
+      navigate("/jdcdc-portal/appointment");
     }
   }, [account]);
 
   return (
-    <div style={{ width: "100%" }}>
-      <Suspense fallback={<Loader />}>
-        <RootStyle>
-          <Outlet />
-        </RootStyle>
-      </Suspense>
-    </div>
+    <>
+      <ToastContainer />
+      <PortalAppBar items={[]} title="JDCDC Portal Login">
+        <Suspense fallback={<Loader />}>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            width="200vh"
+          >
+            <Outlet />
+          </Box>
+        </Suspense>
+      </PortalAppBar>
+    </>
   );
 };
 
