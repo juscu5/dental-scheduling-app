@@ -140,6 +140,7 @@ https://drawsql.app/teams/jscu/diagrams/dental-scheduling-app
 ![App Screenshot](/ERD.png)
 
 ### ACTUAL WEBPAGE
+http://a42a158350bd24c4389db2b0f168ee1a-4756918.us-east-1.elb.amazonaws.com/#/
 ![App Screenshot](/Homepage.png)
 
 
