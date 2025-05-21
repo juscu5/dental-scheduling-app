@@ -1,5 +1,5 @@
 const { models } = require("../../_shared/config/DatabaseConfig");
-const { encryptSHA1 } = require("../../_shared/utilities/encryption");
+const { encryptSHA1 } = require("../../_shared/utilities/Encryption");
 const { signToken } = require("../../_shared/middleware/AuthServices");
 const moment = require("moment");
 
