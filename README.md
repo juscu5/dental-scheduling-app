@@ -138,10 +138,10 @@ Insert gif or link to demo
 ### ENTITY RELATIONSHIP DIAGRAM (ERD)
 https://drawsql.app/teams/jscu/diagrams/dental-scheduling-app
 
-![App Screenshot](/ERD)
+![App Screenshot](/ERD.png)
 
 ### ACTUAL WEBPAGE
-![App Screenshot](/ERD)
+![App Screenshot](/Homepage.png)
 
 
 ## Acknowledgements
