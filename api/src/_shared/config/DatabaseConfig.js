@@ -1,15 +1,18 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const configProd = require("./src/_shared/config/config.prod.json");
-const config = process.env.NODE_ENV === "production" ? configProd.db : configDev.db;
+const configProd = require("./config.prod.json");
+const configDev = require("./config.dev.json");
+const config =
+  process.env.NODE_ENV === "production" ? configProd.db : configDev.db;
 
 const sequelize = new Sequelize(
   config.database,
   config.username,
   config.password,
   {
-    dialect: config.db.dialect,
+    host: config.host,
+    dialect: config.dialect,
     define: {
       underscored: true,
       freezeTableName: true,

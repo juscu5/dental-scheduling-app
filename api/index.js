@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const { initRoutes } = require("./src/_shared/@init/init-routes");
 const configDev = require("./src/_shared/config/config.dev.json");
 const configProd = require("./src/_shared/config/config.prod.json");
-const config = process.env.NODE_ENV === "production" ? configProd.api : configDev.api;
+const config =
+  process.env.NODE_ENV === "production" ? configProd.api : configDev.api;
 const { corsOptions, xOptions } = require("./src/_shared/config/HeaderConfig");
 
 // Initialization
@@ -31,8 +32,20 @@ async function init() {
   app.disable("x-powered-by");
   app.use((req, res, next) => {
     res.removeHeader("Server");
-    // res.setHeader('Server', 'CustomServerName'); // custom server value
     next();
+  });
+
+  //Global error handler
+  //add (reason, promise) to specify the error
+  process.on("unhandledRejection", (e) => {
+    console.error("Minor Error", e);
+  });
+
+  //This will exit if error is fatal
+  //add (error) parameter to check what is the error
+  process.on("uncaughtException", (e) => {
+    console.error("Fatal Error", e);
+    process.exit(1);
   });
 
   initRoutes(app);

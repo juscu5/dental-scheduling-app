@@ -1,14 +1,11 @@
-const { verifyToken } = require("./authservices");
+const { verifyToken } = require("./AuthServices");
 const { privateKey } = require("../config/config.dev.json");
 
 const authMiddleware = async (req, res, next) => {
   const headerToken = req.header("authorization");
   try {
-    console.log(headerToken);
     const splitToken = headerToken.split(" ");
     const token = verifyToken(splitToken[1], privateKey);
-    console.log("token hehe", token);
-
     const currentTime = Math.floor(Date.now() / 1000);
 
     if (token.exp < currentTime) {
