@@ -47,7 +47,7 @@ const PortalAppointment = () => {
     }));
 
     setTableData(transformedData);
-  }, [xData]); 
+  }, [xData]);
 
   const form = useForm<AppointmentField>({
     defaultValues: { dentist: "", service_name: "", date: "", schedule: "" },
@@ -108,13 +108,12 @@ const PortalAppointment = () => {
   const handleEditAppointment = useCallback(
     async (formData: AppointmentField) => {
       try {
-        console.log(formData)
         const timeStart = formData.schedule.slice(0, 8);
         const timeEnd = formData.schedule.slice(9, 17);
         const data = {
           dentist: formData.dentist,
           service_name: formData.service_name,
-          date: moment(formData.date, "MM/DD/YYYY"),
+          date: moment(formData.date, "ll").format("YYYY-MM-DD"),
           time_start: timeStart,
           time_end: timeEnd,
         };
